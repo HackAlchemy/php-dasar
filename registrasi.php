@@ -1,3 +1,17 @@
+<?php
+require 'function.php'; 
+
+if (isset($_POST['registrasi'])) {
+    if (registrasi($_POST) > 0) {
+        echo "<script>
+        alert('user baru ditambahkan');
+        document.location.href = 'index.php';
+        </script>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +44,6 @@
         .card button[type="submit"] {
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
@@ -58,11 +71,17 @@
         <form action="" method="post">
             <label for="username">Username :</label>
             <input type="text" name="username" id="username">
+
             <label for="password">Password :</label>
             <input type="password" name="password" id="password">
+
             <label for="password2">Konfirmasi Password :</label>
             <input type="password" name="password2" id="password2">
-            <button type="submit" name="registrasi">Registrasi</button>
+
+            <button type="submit" name="register" class="btn btn-secondary" formaction="registrasi.php">Register</button>
+            <br>
+            <br>
+            <button type="submit" name="login" class="btn btn-success" formaction="login.php">Login</button>
         </form>
     </div>
 </body>

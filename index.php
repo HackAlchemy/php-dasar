@@ -1,6 +1,12 @@
 <?php
-require 'function.php';
+session_start();
 
+if(!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
+
+require 'function.php';
 $mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id ASC");
 
 // tombol cari diklik
@@ -22,8 +28,10 @@ if (isset($_POST['cari'])) {
         <div class="text-center">
             <h1>Daftar Mahasiswa</h1>
         </div>
-        <div class="d-flex">
+        <br>
+        <div class="d-flex justify-content-between">
             <a href="tambah.php" class="btn btn-primary">Tambah</a>
+            <a href="logout.php" class="btn btn-danger">Logout</a>
         </div>
         <br>
 
